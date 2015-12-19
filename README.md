@@ -1,2 +1,2 @@
 # reviews
-React View Componets
+React View Components
