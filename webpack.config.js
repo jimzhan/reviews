@@ -9,13 +9,17 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/bootstrap.jsx'
+    './src/bootstrap'
   ],
 
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/static'
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
 
   plugins: [
@@ -29,13 +33,13 @@ module.exports = {
         loaders: ['style', 'css', 'scss', 'autoprefixer']
       },
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
-      },
-      {
         test: /\.(png|jpg)$/,
         loader: 'url?limit=8192'
+      },
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, 'src'),
+        loaders: ['react-hot', 'babel']
       }
     ]
   }
