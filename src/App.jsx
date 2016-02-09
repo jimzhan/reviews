@@ -1,10 +1,18 @@
 'use strict';
-import React, { Component } from 'react';
+import React from 'react';
+import { Locations, Location } from 'react-router-component';
 
+import Home from './views/Home';
+import About from './views/About';
 
-class App extends Component {
+class App extends React.Component {
   render() {
-    return <h2>Hello, React</h2>;
+    return (
+      <Locations>
+        <Location path="/" handler={Home} />
+        <Location path="/about" handler={About} />
+      </Locations>
+    );
   }
 }
 
