@@ -30,7 +30,7 @@ module.exports = {
     loaders: [
       {
         test: /.scss$/,
-        loaders: ['style', 'css', 'scss', 'autoprefixer']
+        loaders: ['style', 'css', 'scss', 'postcss']
       },
       {
         test: /\.(png|jpg)$/,
