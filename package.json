@@ -1,0 +1,38 @@
+{
+  "name": "reviews",
+  "version": "0.1.0",
+  "description": "React biolerplate.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "webpack --progress --colors --config webpack.config.js",
+    "watch": "webpack --progress --colors --watch --config webpack.config.js",
+    "start": "DEBUG=* webpack-dev-server",
+    "lint": "make lint",
+    "test": "make test",
+    "test:watch": "npm test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimzhan/reviews.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "redux",
+    "flux"
+  ],
+  "author": "Jim Zhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimzhan/reviews/issues"
+  },
+  "homepage": "https://github.com/jimzhan/reviews#readme",
+  "devDependencies": {
+    "typescript": "^1.8.2",
+    "ts-loader": "^0.8.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+  }
+}
