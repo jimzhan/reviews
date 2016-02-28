@@ -1,21 +1,22 @@
 'use strict';
+let port = 3000;
 let path = require('path');
 let webpack = require('webpack');
 
-
-module.exports = {  
+module.exports = {
+  devtool: 'eval-source-map',
 
   entry: [
-    'webpack-dev-server/client?http://localhost:8000',
+    'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/index.ts'
+    './src/index'
   ],
 
   devServer: {
     info: false,
     hot: true,
     inline: false,
-    port: 8000,
+    port: port,
     host: 'localhost',
     colors: true,
     progress: true,
@@ -34,12 +35,20 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+    extensions: ['', '.js', '.ts', '.tsx']
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
 
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader' }
+      {
+        test: /\.tsx?$/,
+        include: path.join(__dirname, 'src'),
+        loaders: ['ts-loader']
+      }
     ]
   }
-}
+};
