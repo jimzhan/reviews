@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --progress --colors --config webpack.config.js",
     "watch": "webpack --progress --colors --watch --config webpack.config.js",
-    "start": "DEBUG=* node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "DEBUG=* webpack-dev-server",
     "lint": "make lint",
     "test": "make test",
     "test:watch": "npm test -- --watch"
@@ -28,12 +28,14 @@
   },
   "homepage": "https://github.com/jimzhan/reviews#readme",
   "devDependencies": {
-    "ts-loader": "^0.8.1",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "ts-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
   },
   "dependencies": {
     "debug": "^2.2.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
     "typescript": "^1.9.0-dev.20160228"
   }
 }
