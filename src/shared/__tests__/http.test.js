@@ -1,4 +1,3 @@
-'use strict';
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import * as http from '../http';
@@ -16,7 +15,7 @@ describe('shared.http#get()', () => {
   });
 
   it(`GET ${root}/404`, () => {
-    http.get(`{root}/404`)
+    http.get(`${root}/404`)
       .then((response) => {
         expect(response.status).to.equal(404);
         return JSON.stringify(response.body);

@@ -1,14 +1,13 @@
-'use strict';
 import request from 'superagent';
 
 const external = {
-  headers: {}
+  headers: {},
 };
 
 const internal = {
   headers: {
-    credentials: 'same-origin'
-  }
+    credentials: 'same-origin',
+  },
 };
 
 /**
@@ -21,7 +20,7 @@ const internal = {
  * @api private
  */
 const execute = (method, url, settings) => {
-  let options = settings || (url.startsWith(url) ? external : internal);
+  const options = settings || (url.startsWith(url) ? external : internal);
   options.url = url;
   return new Promise((resolve, reject) => {
     request[method.toLowerCase()](options.url)
@@ -46,9 +45,9 @@ const execute = (method, url, settings) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const get = (url, options) => {
+function get(url, options) {
   return execute('get', url, options);
-};
+}
 
 
 /**
@@ -59,9 +58,9 @@ const get = (url, options) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const post = (url, options) => {
+function post(url, options) {
   return execute('post', url, options);
-};
+}
 
 
 /**
@@ -72,9 +71,9 @@ const post = (url, options) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const put = (url, options) => {
+function put(url, options) {
   return execute('put', url, options);
-};
+}
 
 /**
  * Fire an http DELETE request to the URL endpoint with options.
@@ -84,10 +83,10 @@ const put = (url, options) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const remove = (url, options) => {
+function remove(url, options) {
   return execute('delete', url, options);
-};
+}
 
 export {
-  get, post, put, remove
+  get, post, put, remove,
 };
