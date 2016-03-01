@@ -1,12 +1,11 @@
-'use strict';
-let path = require('path');
+const path = require('path');
 
 
 module.exports = {
   devtool: 'eval',
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
 
   module: {
@@ -14,12 +13,12 @@ module.exports = {
       {
         test: /\.(jsx?)$/,
         loaders: [
-            'react-hot-loader',
-            'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0'
+          'react-hot-loader',
+          'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
         ],
         include: path.join(__dirname, 'src'),
-        exclude: /node_modules/
-      }
-    ]
-  }
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
