@@ -17,7 +17,7 @@ React development boilerplate.
 
 ## Gulp
 
-- [ ] build
+- [X] build
 - [X] lint
 - [X] test
 
@@ -27,3 +27,19 @@ React development boilerplate.
 - **webpack.shared.js** shared webpack configurations.
 - **webpack.babel.js** production webpack configurations (ES2015).
 - **webpack.dev.babel.js** development webpack configurations (ES2015).
+
+
+## TODOs
+
+- [ ] autoprefixing
+- [ ] image processing
+- [ ] css/style loaders
+- [ ] postcss supports
+- [ ] redux integration
+- [ ] redux devtools integration
+- [ ] TodoMVC example
+
+
+### NOTE
+
+This is my personal boilerplate, it may not be a good fit for your project(s).

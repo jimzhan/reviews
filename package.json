@@ -4,10 +4,9 @@
   "description": "react view components",
   "main": "package.json",
   "scripts": {
-    "start": "DEBUG=* webpack-dev-server --config webpack.dev.babel.js",
     "build": "webpack --progress --colors --config webpack.babel.js",
-    "watch": "webpack --progress --colors --watch --config webpack.dev.js",
-    "test:watch": "npm test -- --watch"
+    "start": "DEBUG=* webpack-dev-server --config webpack.dev.babel.js",
+    "watch": "webpack --progress --colors --watch --config webpack.dev.babel.js"
   },
   "repository": {
     "type": "git",
@@ -42,7 +41,8 @@
     "require-dir": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest",
-    "webpack-merge": "latest"
+    "webpack-merge": "latest",
+    "webpack-stream": "^3.1.0"
   },
   "dependencies": {
     "chai": "^3.5.0",
