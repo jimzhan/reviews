@@ -1,24 +1,15 @@
-const path = require('path');
+import path from 'path';
 
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
+
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js',
+  },
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-  },
-
-  module: {
-    loaders: [
-      {
-        test: /\.(jsx?)$/,
-        loaders: [
-          'react-hot-loader',
-          'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
-        ],
-        include: path.join(__dirname, 'src'),
-        exclude: /node_modules/,
-      },
-    ],
   },
 };

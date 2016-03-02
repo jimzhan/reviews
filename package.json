@@ -4,10 +4,9 @@
   "description": "react view components",
   "main": "package.json",
   "scripts": {
-    "start": "DEBUG=* webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --progress --colors --config webpack.dev.js",
+    "start": "DEBUG=* webpack-dev-server --config webpack.dev.babel.js",
+    "build": "webpack --progress --colors --config webpack.babel.js",
     "watch": "webpack --progress --colors --watch --config webpack.dev.js",
-    "test": "make test",
     "test:watch": "npm test -- --watch"
   },
   "repository": {

@@ -1,10 +1,29 @@
 # reviews
-React View Components
+
+React development boilerplate.
 
 
-## packages
+## application packages
 
-- React: v0.14.7
-- ReactDOM: v0.14.7
-- React Router Component: v.0.30.1
-- SuperAgent: v1.7.2
+- chai: 3.5.0
+- debug: 2.2.0
+- mocha: 2.4.5
+- react: 0.14.7
+- react-dom: 0.14.7
+- react-router-component: 0.31.2
+- superagent: 1.8.0-beta.2
+
+
+
+## Gulp
+
+- [ ] build
+- [X] lint
+- [X] test
+
+
+## Webpack configurations
+
+- **webpack.shared.js** shared webpack configurations.
+- **webpack.babel.js** production webpack configurations (ES2015).
+- **webpack.dev.babel.js** development webpack configurations (ES2015).

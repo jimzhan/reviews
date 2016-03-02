@@ -1,7 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const shared = require('./webpack.shared');
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
+import shared from './webpack.shared';
+
 
 const port = 3000;
 
@@ -26,6 +27,20 @@ module.exports = merge(shared, {
     'webpack/hot/only-dev-server',
     path.join(__dirname, 'src', 'index'),
   ],
+
+  module: {
+    loaders: [
+      {
+        test: /\.(jsx?)$/,
+        loaders: [
+          'react-hot-loader',
+          'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
+        ],
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
+      },
+    ],
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
