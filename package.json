@@ -37,12 +37,16 @@
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "latest",
+    "gulp": "latest",
+    "gulp-eslint": "latest",
     "react-hot-loader": "latest",
+    "require-dir": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest",
     "webpack-merge": "latest"
   },
   "dependencies": {
+    "debug": "^2.2.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router-component": "^0.31.2"
