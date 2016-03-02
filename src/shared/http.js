@@ -45,9 +45,7 @@ const execute = (method, url, settings) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-function get(url, options) {
-  return execute('get', url, options);
-}
+const get = (url, options) => execute('get', url, options);
 
 
 /**
@@ -58,9 +56,7 @@ function get(url, options) {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-function post(url, options) {
-  return execute('post', url, options);
-}
+const post = (url, options) => execute('post', url, options);
 
 
 /**
@@ -71,9 +67,8 @@ function post(url, options) {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-function put(url, options) {
-  return execute('put', url, options);
-}
+const put = (url, options) => execute('put', url, options);
+
 
 /**
  * Fire an http DELETE request to the URL endpoint with options.
@@ -83,9 +78,8 @@ function put(url, options) {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-function remove(url, options) {
-  return execute('delete', url, options);
-}
+const remove = (url, options) => execute('delete', url, options);
+
 
 export {
   get, post, put, remove,

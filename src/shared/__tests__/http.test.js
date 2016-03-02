@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import * as http from '../http';
 
-
 const root = 'http://jsonplaceholder.typicode.com';
 
 describe('shared.http#get()', () => {

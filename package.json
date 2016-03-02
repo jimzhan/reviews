@@ -7,7 +7,6 @@
     "start": "DEBUG=* webpack-dev-server --config webpack.dev.js",
     "build": "webpack --progress --colors --config webpack.dev.js",
     "watch": "webpack --progress --colors --watch --config webpack.dev.js",
-    "lint": "make lint",
     "test": "make test",
     "test:watch": "npm test -- --watch"
   },
@@ -39,6 +38,7 @@
     "eslint-plugin-react": "latest",
     "gulp": "latest",
     "gulp-eslint": "latest",
+    "gulp-mocha": "^2.2.0",
     "react-hot-loader": "latest",
     "require-dir": "latest",
     "webpack": "latest",
@@ -46,9 +46,12 @@
     "webpack-merge": "latest"
   },
   "dependencies": {
+    "chai": "^3.5.0",
     "debug": "^2.2.0",
+    "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router-component": "^0.31.2"
+    "react-router-component": "^0.31.2",
+    "superagent": "^1.8.0-beta.2"
   }
 }
