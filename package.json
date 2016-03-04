@@ -4,8 +4,18 @@
   "description": "react view components",
   "main": "package.json",
   "scripts": {
+    "prebuild": "npm run lint && npm run clean",
     "build": "webpack --progress --colors --config webpack.babel.js",
+
+    "lint": "node_modules/.bin/eslint src --ext=.jsx --ext=.js",
+
+    "clean": "rm -r build",
+
+    "pretest": "npm run lint",
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
+
     "start": "DEBUG=* webpack-dev-server --config webpack.dev.babel.js",
+
     "watch": "webpack --progress --colors --watch --config webpack.dev.babel.js"
   },
   "repository": {
@@ -34,15 +44,11 @@
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "latest",
-    "gulp": "latest",
-    "gulp-eslint": "latest",
-    "gulp-mocha": "^2.2.0",
     "react-hot-loader": "latest",
     "require-dir": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest",
-    "webpack-merge": "latest",
-    "webpack-stream": "^3.1.0"
+    "webpack-merge": "latest"
   },
   "dependencies": {
     "chai": "^3.5.0",

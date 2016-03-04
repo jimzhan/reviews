@@ -14,12 +14,14 @@ React development boilerplate.
 - superagent: 1.8.0-beta.2
 
 
+## npm scripts
 
-## Gulp
-
-- [X] build
-- [X] lint
-- [X] test
+- [X] npm run build (pre clean & lint)
+- [X] npm run lint (eslint with Airbnb rules)
+- [X] npm run clean (remove all compiled sources)
+- [X] npm run test (pre lint)
+- [X] npm start (start webpack-dev-server)
+- [ ] npm run watch (start webpack-dev-server under debug mode)
 
 
 ## Webpack configurations
