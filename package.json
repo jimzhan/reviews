@@ -14,7 +14,7 @@
     "pretest": "npm run lint",
     "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
 
-    "start": "DEBUG=* webpack-dev-server --config webpack.dev.babel.js",
+    "start": "DEBUG=worker webpack-dev-server --config webpack.dev.babel.js",
 
     "watch": "webpack --progress --colors --watch --config webpack.dev.babel.js"
   },
