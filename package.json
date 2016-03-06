@@ -5,13 +5,13 @@
   "main": "package.json",
   "scripts": {
     "prebuild": "npm run lint && npm run clean",
-    "build": "webpack --progress --colors --config webpack.babel.js",
+    "build": "node_modules/.bin/webpack --progress --colors --config webpack.babel.js",
     "lint": "node_modules/.bin/eslint src --ext=.js,.jsx",
     "clean": "rm -r build",
     "pretest": "npm run lint",
     "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
-    "start": "DEBUG=worker webpack-dev-server --config webpack.babel.js",
-    "watch": "webpack --progress --colors --watch --plugin HotModuleReplacementPlugin --config webpack.babel.js"
+    "start": "node_modules/.bin/webpack-dev-server --config webpack.babel.js",
+    "watch": "node_modules/.bin/webpack --progress --colors --watch --config webpack.babel.js"
   },
   "repository": {
     "type": "git",
@@ -36,11 +36,13 @@
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "babel-preset-stage-0": "latest",
+    "css-loader": "^0.23.1",
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "latest",
     "react-hot-loader": "latest",
     "require-dir": "latest",
+    "style-loader": "^0.13.0",
     "webpack": "latest",
     "webpack-dev-server": "latest",
     "webpack-merge": "latest"

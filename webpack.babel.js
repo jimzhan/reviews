@@ -2,9 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 
-const port = 3000;
-
 const PATHS = {
+  src: path.join(__dirname, 'src'),
   app: path.join(__dirname, 'src', 'index'),
   build: path.join(__dirname, 'build'),
 };
@@ -12,7 +11,6 @@ const PATHS = {
 const TASK = process.env.npm_lifecycle_event;
 
 const common = {
-
   devtool: 'eval-source-map',
 
   resolve: {
@@ -26,7 +24,10 @@ const common = {
 };
 
 
-if (TASK === 'start' || !TASK) {
+//-----------------------
+// DEVELOPMENT Settings |
+//-----------------------
+if (TASK === 'start' || TASK === 'watch' || !TASK) {
   // DEVELOPMENT configurations
   module.exports = merge(common, {
     devServer: {
@@ -44,7 +45,7 @@ if (TASK === 'start' || !TASK) {
     },
 
     entry: [
-      `webpack-dev-server/client?http://localhost:${port}`,
+      'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server',
       PATHS.app,
     ],
@@ -52,12 +53,25 @@ if (TASK === 'start' || !TASK) {
     module: {
       loaders: [
         {
+          test: /\.html$/,
+          loader: 'file?name=[name].[ext]',
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          loaders: [
+            'style-loader',
+            'css-loader?modules&sourceMap&importLoaders=1&'
+            + 'localIdentName=[name]__[local]___[hash:base64:5]',
+          ],
+        },
+        {
           test: /\.(jsx?)$/,
           loaders: [
             'react-hot-loader',
             'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
           ],
-          include: path.join(__dirname, 'src'),
+          include: PATHS.src,
           exclude: /node_modules/,
         },
       ],
@@ -75,8 +89,10 @@ if (TASK === 'start' || !TASK) {
   });
 }
 
+//-----------------------
+// PRODUCTION Settings |
+//-----------------------
 if (TASK === 'build') {
-  // PRODUCTION configurations
   module.exports = merge(common, {
     entry: [
       PATHS.app,
@@ -85,11 +101,24 @@ if (TASK === 'build') {
     module: {
       loaders: [
         {
+          test: /\.html$/,
+          loader: 'file?name=[name].[ext]',
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          loaders: [
+            'style-loader',
+            'css-loader?modules&sourceMap&importLoaders=1&'
+            + 'localIdentName=[name]__[local]___[hash:base64:5]',
+          ],
+        },
+        {
           test: /\.(jsx?)$/,
           loaders: [
             'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0',
           ],
-          include: path.join(__dirname, 'src'),
+          include: PATHS.src,
           exclude: /node_modules/,
         },
       ],
@@ -101,6 +130,7 @@ if (TASK === 'build') {
     },
 
     plugins: [
+      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
       new webpack.NoErrorsPlugin(),
     ],
   });
