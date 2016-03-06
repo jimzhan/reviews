@@ -31,13 +31,13 @@ React development boilerplate.
 
 ## TODOs
 
-- [ ] conditional webpack config
-- [ ] autoprefixing
-- [ ] image processing
-- [ ] css/style loaders
-- [ ] postcss supports
+- [X] conditional webpack config
+- [X] css/style loaders
 - [ ] redux integration
 - [ ] redux devtools integration
+- [ ] autoprefixing
+- [ ] image processing
+- [ ] postcss supports
 - [ ] TodoMVC example
 
 
