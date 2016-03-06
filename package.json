@@ -6,17 +6,12 @@
   "scripts": {
     "prebuild": "npm run lint && npm run clean",
     "build": "webpack --progress --colors --config webpack.babel.js",
-
     "lint": "node_modules/.bin/eslint src --ext=.jsx --ext=.js",
-
     "clean": "rm -r build",
-
     "pretest": "npm run lint",
     "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
-
-    "start": "DEBUG=worker webpack-dev-server --config webpack.dev.babel.js",
-
-    "watch": "webpack --progress --colors --watch --config webpack.dev.babel.js"
+    "start": "DEBUG=worker webpack-dev-server --config webpack.babel.js",
+    "watch": "webpack --progress --colors --watch --plugin HotModuleReplacementPlugin --config webpack.babel.js"
   },
   "repository": {
     "type": "git",
@@ -56,7 +51,11 @@
     "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router-component": "^0.31.2",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "react-router-redux": "^4.0.0",
+    "redux": "^3.3.1",
+    "redux-actions": "^0.9.1",
     "superagent": "^1.8.0-beta.2"
   }
 }
