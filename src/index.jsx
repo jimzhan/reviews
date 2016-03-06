@@ -5,7 +5,7 @@ import * as logger from './shared/logger';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  logger.info('DOMContentloaded');
+  logger.info('bang bang DOMContentloaded');
   const main = document.getElementsByTagName('main')[0];
   ReactDOM.render(<App />, main);
 });

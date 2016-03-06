@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "description": "react view components",
   "main": "package.json",
+  "bin": {
+    "eslint": "./node_modules/eslint/bin/eslint.js",
+    "mocha": "./node_modules/mocha/bin/mocha",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "webpack-dev-server": "./node_modules/webpack-dev-server/webpack-dev-server.js"
+  },
   "scripts": {
+    "eslint": "npm run eslint",
     "prebuild": "npm run lint && npm run clean",
-    "build": "node_modules/.bin/webpack --progress --colors --config webpack.babel.js",
-    "lint": "node_modules/.bin/eslint src --ext=.js,.jsx",
-    "clean": "rm -r build",
+    "build": "webpack --progress --colors --config webpack.babel.js",
+    "lint": "eslint src --ext=.js,.jsx",
+    "clean": "rimraf build",
     "pretest": "npm run lint",
-    "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
-    "start": "node_modules/.bin/webpack-dev-server --config webpack.babel.js",
-    "watch": "node_modules/.bin/webpack --progress --colors --watch --config webpack.babel.js"
+    "test": "mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
+    "start": "webpack-dev-server --progress --config webpack.babel.js",
+    "watch": "webpack --progress --colors --watch --config webpack.babel.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +27,7 @@
   "keywords": [
     "react",
     "views",
+    "boilerplate",
     "components"
   ],
   "author": "Jim Zhan <jim.zhan@me.com>",
@@ -41,7 +49,7 @@
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "latest",
     "react-hot-loader": "latest",
-    "require-dir": "latest",
+    "rimraf": "latest",
     "style-loader": "^0.13.0",
     "webpack": "latest",
     "webpack-dev-server": "latest",

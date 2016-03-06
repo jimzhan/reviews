@@ -1,12 +1,12 @@
 import debug from 'debug';
 
 
-localStorage.debug = 'app:*';
+localStorage.debug = 'App:*';
 
-const extdebug = debug('app:debug');
-const info = debug('app:info');
-const warn = debug('app:warn');
-const error = debug('app:error');
+const extdebug = debug('App:DEBUG');
+const info = debug('App:INFO');
+const warn = debug('App:WARN');
+const error = debug('App:ERROR');
 
 export {
   extdebug as debug,
