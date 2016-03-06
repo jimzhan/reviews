@@ -26,13 +26,12 @@ React development boilerplate.
 
 ## Webpack configurations
 
-- **webpack.shared.js** shared webpack configurations.
-- **webpack.babel.js** production webpack configurations (ES2015).
-- **webpack.dev.babel.js** development webpack configurations (ES2015).
+- **webpack.babel.js** webpack development configurations (ES2015).
 
 
 ## TODOs
 
+- [ ] conditional webpack config
 - [ ] autoprefixing
 - [ ] image processing
 - [ ] css/style loaders

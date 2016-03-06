@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "npm run lint && npm run clean",
     "build": "webpack --progress --colors --config webpack.babel.js",
-    "lint": "node_modules/.bin/eslint src --ext=.jsx --ext=.js",
+    "lint": "node_modules/.bin/eslint src --ext=.js,.jsx",
     "clean": "rm -r build",
     "pretest": "npm run lint",
     "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive src/**/*.test.js",
