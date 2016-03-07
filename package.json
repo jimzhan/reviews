@@ -49,6 +49,9 @@
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "latest",
     "react-hot-loader": "latest",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.5",
+    "redux-logger": "^2.6.1",
     "rimraf": "latest",
     "style-loader": "^0.13.0",
     "webpack": "latest",
@@ -58,6 +61,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "debug": "^2.2.0",
+    "enzyme": "^2.0.0",
     "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
