@@ -1,25 +1,20 @@
 import React from 'react';
+import { store } from '../shared/store';
 
 
-class Counter extends React.Component {
+const increase = () => {
+  store.dispatch('INCREMENT');
+};
 
-  increase() {
-
-  }
-
-  render() {
-    return (
-      <div>
-        <span>this.props.value</span>
-        <button onClick={this.increase}>Increase</button>
-      </div>
-    );
-  }
-}
+const Counter = (props) => (
+  <div>
+    <div>{props.value}</div>
+    <button onClick={increase}>Increase</button>
+  </div>
+);
 
 Counter.propTypes = {
   value: React.PropTypes.number.isRequired,
-  increase: React.PropTypes.func.isRequired,
 };
 
 

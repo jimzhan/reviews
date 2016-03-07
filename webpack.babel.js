@@ -11,7 +11,7 @@ const PATHS = {
 const TASK = process.env.npm_lifecycle_event;
 
 const common = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -130,7 +130,6 @@ if (TASK === 'build') {
     },
 
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
       new webpack.NoErrorsPlugin(),
     ],
   });
