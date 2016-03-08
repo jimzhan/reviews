@@ -1,9 +1,4 @@
 import { createAction } from 'redux-actions';
 
 
-const increase = createAction('increase');
-
-
-export {
-  increase,
-};
+export const increase = createAction('increase');

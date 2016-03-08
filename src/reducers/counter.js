@@ -1,11 +1,11 @@
+import { handleActions } from 'redux-actions';
 
-export default function counter(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}
+
+export default handleActions({
+  increase: (state, action) => ({
+    value: state.value + action.payload,
+  }),
+
+}, {
+  value: 0,
+});
