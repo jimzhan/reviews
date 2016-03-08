@@ -1,33 +1,30 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { increase } from '../actions/counter';
+import * as counter from '../actions/counter';
 
 
-class Counter extends React.Component {
-  render() {
-    return (
-      <div>
-        <div>{this.props.value}</div>
-        <button onClick={this.props.increase}>Increase</button>
-      </div>
-    );
-  }
-}
+const Counter = (props) => (
+  <div>
+    <div>{props.value}</div>
+    <button onClick={props.increase}>Increase</button>
+  </div>
+);
 
 Counter.propTypes = {
-  value: React.PropTypes.number.isRequired,
-  increase: React.PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+  increase: PropTypes.func.isRequired,
 };
 
 
-const mapStateToProps = (state) => ({
-  value: state.value,
-});
+const mapStateToProps = (state) => {
+  console.log(state.counter);
+  return { value: state.counter.value };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  increase: bindActionCreators(increase, dispatch),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(
+  mapStateToProps,
+  (dispatch) => ({ increase: bindActionCreators(counter.increase, dispatch) })
+)(Counter);

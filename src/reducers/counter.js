@@ -2,10 +2,5 @@ import { handleActions } from 'redux-actions';
 
 
 export default handleActions({
-  increase: (state, action) => ({
-    value: state.value + action.payload,
-  }),
-
-}, {
-  value: 0,
-});
+  increase: (state) => Object.assign({}, state, { value: state.value + 1 }),
+}, { value: 0 });

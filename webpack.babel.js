@@ -21,6 +21,12 @@ const common = {
     path: PATHS.build,
     filename: 'app.js',
   },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }
+    })
+  ],
 };
 
 
@@ -36,7 +42,7 @@ if (TASK === 'start' || TASK === 'watch' || !TASK) {
       host: process.env.HOST,
       port: process.env.PORT || 3000,
       hot: true,
-      publicPath: '/static',
+      publicPath: '/static/',
       noInfo: true,
       stats: { colors: true },
       watchOptions: {

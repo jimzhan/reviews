@@ -33,16 +33,7 @@ const configureForProduction = (initialState) => {
     )
   );
 
-  const store = createStore(rootReducer, initialState, enhancer);
-
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers');
-      store.replaceReducer(nextReducer);
-    });
-  }
-
-  return store;
+  return createStore(rootReducer, initialState, enhancer);
 };
 
 if (process.env.NODE_ENV === 'production') {
