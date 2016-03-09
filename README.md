@@ -10,7 +10,7 @@ React development boilerplate.
 - mocha: 2.4.5
 - react: 0.14.7
 - react-dom: 0.14.7
-- react-router-component: 0.31.2
+- redux: 3.3.1
 - superagent: 1.8.0-beta.2
 
 
@@ -33,8 +33,8 @@ React development boilerplate.
 
 - [X] conditional webpack config
 - [X] css/style loaders
-- [ ] redux integration
-- [ ] redux devtools integration
+- [X] redux integration
+- [X] redux devtools integration
 - [ ] autoprefixing
 - [ ] image processing
 - [ ] postcss supports

@@ -18,13 +18,7 @@ Counter.propTypes = {
 };
 
 
-const mapStateToProps = (state) => {
-  console.log(state.counter);
-  return { value: state.counter.value };
-};
-
-
 export default connect(
-  mapStateToProps,
+  (state) => ({ value: state.counter.value }),
   (dispatch) => ({ increase: bindActionCreators(counter.increase, dispatch) })
 )(Counter);
