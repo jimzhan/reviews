@@ -2,6 +2,8 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 
+const name = 'app';
+
 const PATHS = {
   src: path.join(__dirname, 'src'),
   app: path.join(__dirname, 'src', 'index'),
@@ -19,7 +21,7 @@ const common = {
 
   output: {
     path: PATHS.build,
-    filename: 'app.js',
+    filename: `${name}.js`,
   },
 
   plugins: [
@@ -85,7 +87,7 @@ if (TASK === 'start' || TASK === 'watch' || !TASK) {
 
     output: {
       path: PATHS.build,
-      filename: 'app.js',
+      filename: `${name}.js`,
     },
 
     plugins: [
@@ -132,7 +134,7 @@ if (TASK === 'build') {
 
     output: {
       path: PATHS.build,
-      filename: 'app.js',
+      filename: `${name}.js`,
     },
 
     plugins: [
