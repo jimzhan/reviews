@@ -15,6 +15,7 @@ const execute = (method, url, settings) => {
   const defaults = { credentials: url.startsWith('http') ? 'include' : 'same-origin' };
   const options = Object.assign({}, defaults, settings);
   options.method = method;
+
   return fetch(url, options).then((response) => {
     if (response.status >= 200 && response.status < 300) {
       return response;

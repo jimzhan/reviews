@@ -24,8 +24,8 @@ const common = {
 
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }
-    })
+      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') },
+    }),
   ],
 };
 
@@ -64,7 +64,7 @@ if (TASK === 'start' || TASK === 'watch' || !TASK) {
         },
         {
           test: /\.css$/,
-          exclude: /node_modules/,
+          include: /node_modules/,
           loaders: [
             'style-loader',
             'css-loader?modules&sourceMap&importLoaders=1&'

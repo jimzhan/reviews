@@ -60,6 +60,7 @@
     "webpack-merge": "latest"
   },
   "dependencies": {
+    "antd": "^0.12.12",
     "chai": "^3.5.0",
     "debug": "^2.2.0",
     "enzyme": "^2.0.0",
