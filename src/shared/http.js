@@ -1,14 +1,5 @@
-import request from 'superagent';
+import 'isomorphic-fetch';
 
-const external = {
-  headers: {},
-};
-
-const internal = {
-  headers: {
-    credentials: 'same-origin',
-  },
-};
 
 /**
  * Fire the actual http request & return a Promise object.
@@ -20,20 +11,17 @@ const internal = {
  * @api private
  */
 const execute = (method, url, settings) => {
-  const options = settings || (url.startsWith(url) ? external : internal);
-  options.url = url;
-  return new Promise((resolve, reject) => {
-    request[method.toLowerCase()](options.url)
-      .set(options.headers)
-      .send(options.payload)
-      .end((err, res) => {
-        if (err) {
-          return reject(err);
-        } else if (res.status >= 400) {
-          return reject(new Error(res.text));
-        }
-        return resolve(res);
-      });
+  // SEE https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+  const defaults = { credentials: url.startsWith('http') ? 'include' : 'same-origin' };
+  const options = Object.assign({}, defaults, settings);
+  options.method = method;
+  return fetch(url, options).then((response) => {
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    }
+    const error = new Error(response.statusText);
+    error.response = response;
+    throw error;
   });
 };
 
@@ -45,7 +33,7 @@ const execute = (method, url, settings) => {
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const get = (url, options) => execute('get', url, options);
+const get = (url, options) => execute('GET', url, options);
 
 
 /**
@@ -56,7 +44,7 @@ const get = (url, options) => execute('get', url, options);
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const post = (url, options) => execute('post', url, options);
+const post = (url, options) => execute('POST', url, options);
 
 
 /**
@@ -67,7 +55,7 @@ const post = (url, options) => execute('post', url, options);
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const put = (url, options) => execute('put', url, options);
+const put = (url, options) => execute('PUT', url, options);
 
 
 /**
@@ -78,9 +66,12 @@ const put = (url, options) => execute('put', url, options);
  * @return {Promise} Promise object for futher processing.
  * @api public
  */
-const remove = (url, options) => execute('delete', url, options);
+const remove = (url, options) => execute('DELETE', url, options);
 
 
 export {
-  get, post, put, remove,
+  get,
+  post,
+  put,
+  remove,
 };
