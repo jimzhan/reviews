@@ -1,4 +1,4 @@
-import 'isomorphic-fetch';
+import request from 'superagent';
 
 
 /**
@@ -11,18 +11,28 @@ import 'isomorphic-fetch';
  * @api private
  */
 const execute = (method, url, settings) => {
-  // SEE https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
-  const defaults = { credentials: url.startsWith('http') ? 'include' : 'same-origin' };
+  const defaults = {
+    // SEE https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+    headers: {
+      credentials: url.startsWith('http') ? 'include' : 'same-origin',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  };
   const options = Object.assign({}, defaults, settings);
-  options.method = method;
 
-  return fetch(url, options).then((response) => {
-    if (response.status >= 200 && response.status < 300) {
-      return response;
-    }
-    const error = new Error(response.statusText);
-    error.response = response;
-    throw error;
+  return new Promise((resolve, reject) => {
+    request[method.toLowerCase()](url)
+      .set(options.headers)
+      .send(options.payload)
+      .type(options.type || 'form')
+      .end((error, response) => {
+        if (error) {
+          return reject(error);
+        } else if (response.status >= 400) {
+          return reject(new Error(response.text));
+        }
+        return resolve(response);
+      });
   });
 };
 

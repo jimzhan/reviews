@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+const program = require('commander');
+
+
+program
+  .command('new [name]')
+  .description('create a new bioloerplate')
+  .action((name) => {
+    if (! name) {
+      throw new Error('project name is missing');
+    }
+  });
+
+
+program.parse(process.argv);
